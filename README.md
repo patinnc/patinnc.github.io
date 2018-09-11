@@ -47,7 +47,7 @@ OPPAT has 3 visualization modes:
 Viz general info
 - chart all the data in a browser (on Linux or Windows)
 - charts are defined in a json file so you can add events and charts without recompiling OPPAT
-- browser interface is sort of like Windows WPA (navbar on left)
+- browser interface is sort of like Windows WPA (navbar on left). See [nav bar screenshot](images/left_navbar.png)
     - charts are grouped by category (GPU, CPU, Power, etc)
     - charts can be all hidden or selectively displayed
     - hovering over a chart title in the left nav menu scrolls that chart into view
