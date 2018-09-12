@@ -70,26 +70,27 @@ Viz general info
     - this doesn't work for the vertical lines since they are just connecting 2 points... only the horizontal pieces of each line is searched for the data value
     - See a [screen shot of hovering over event](images/hover_ballon.png). This shows the relative time of the (CSwtich) event, some info like process/pid/tid and the line number in the text file so you can get more info.
     - See a [screen shot of event with callstack](images/hover_callstack.png). This shows the callstack info as well.
-- unlimited zooming in to nanosec level and zooming back out.
-    - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
-    - See a [screen shot of zooming at microsecond level](images/zoom_1.png). This shows the callstack for sched_switch event where spin.x is blocked by doing memory mapping operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
-- panning at any level
-- a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
+- zooming
+    - unlimited zooming in to nanosec level and zooming back out.
+        - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
+        - See a [screen shot of zooming at microsecond level](images/zoom_1.png). This shows the callstack for sched_switch event where spin.x is blocked by doing memory mapping operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
+    - charts can be zoomed individually or charts with the same file_tag can be linked so that zooming/panning 1 chart changes the interval of all the charts with the same file_tag
+    - You can zoom in/out by:
+        - mouse wheel vertically on the chart area. The chart zooms on the time in the center of the chart.
+             - on my laptop this is doing 2 fingers on vertically on the touchpad
+        - clicking on chart and dragging the mouse to the right and releasing the mouse (the chart will zoom to the selected interval)
+        - clicking on chart and dragging the mouse to the left and releasing the mouse will zoom out in sort of inversely proportional to how much of the chart you selected. That is, if you left drag almost the whole chart area then the chart will zoom back out ~2x. If you just left drag a small interval then the chart will zoom out the ~whole way.
+        - you can also unzoom by (on my laptop) doing a touchpad 2 finger vertical scroll in the opposite direction of zoom 
+- panning 
+    - on my laptop this is doing 2 fingers on horizontal scroll motion on the touchpad
+    - using the slider below the chart 
+    - panning at any level
+    - a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
     - See a [screen shot of panning](images/pan_1.png). This shows the panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
-- charts can be zoomed individually or charts with the same file_tag can be linked so that zooming/panning 1 chart changes the interval of all the charts with the same file_tag
 - hovering on a chart legend entry highlights that line.
 - clicking on a chart legend entry toggles the visibility of that line.
 - double clicking a legend entry makes only that entry visible/hidden
 - if a legend entry is hidden and you hover over it, it will be displayed until you hover out
-- You can zoom in/out by:
-    - mouse wheel vertically on the chart area. The chart zooms on the time in the center of the chart.
-         - on my laptop this is doing 2 fingers on vertically on the touchpad
-    - clicking on chart and dragging the mouse to the right and releasing the mouse (the chart will zoom to the selected interval)
-    - clicking on chart and dragging the mouse to the left and releasing the mouse will zoom out in sort of inversely proportional to how much of the chart you selected. That is, if you left drag almost the whole chart area then the chart will zoom back out ~2x. If you just left drag a small interval then the chart will zoom out the ~whole way.
-    - you can also unzoom by (on my laptop) doing a touchpad 2 finger vertical scroll in the opposite direction of zoom 
-- You can pan by:
-    - on my laptop this is doing 2 fingers on horizontal scroll motion on the touchpad
-    - using the slider below the chart 
 
 #### chart types:
 - 'cpu busy' chart: a kernelshark-like chart showing the cpu occupancy by pid/thread. See kernelshark reference http://rostedt.homelinux.com/kernelshark/
