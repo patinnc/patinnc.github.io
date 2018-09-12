@@ -61,11 +61,15 @@ Viz general info
         - Many sites have much better power data (voltages/currents/power at the msec (or better) rate). It would be easy to incorporate these types of power data (such as from Kratos or Qualcomm MDPs) but I don't have access to the data.
     - or compare 2 different runs on the same platform
     - a file group tag (file_tag) is prefixed to the title to distinguish charts
+       - a 'tag' is defined in the data dir's file_list.json file and/or input_files/input_data_files.json
+       - the input_files/input_data_files.json is a list of all the OPPAT data dirs (but the user has to maintain it).
     - Charts with the same title are plotted one after the other to allow easy comparison
 
 #### chart features:
 - hovering over a section of a line of the chart shows the data point for that line at that point
     - this doesn't work for the vertical lines since they are just connecting 2 points... only the horizontal pieces of each line is searched for the data value
+    - See a [screen shot of hovering over event](images/hover_ballon.png). This shows the relative time of the (CSwtich) event, some info like process/pid/tid and the line number in the text file so you can get more info.
+    - See a [screen shot of event with callstack](images/hover_callstack.png). This shows the callstack info as well.
 - unlimited zooming in to nanosec level and zooming back out.
     - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
 - panning at any level
