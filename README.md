@@ -44,17 +44,21 @@ OPPAT viz works better in Chrome than Firefox primarily because the zoom using t
 OPPAT has 3 visualization modes:
 1. The usual chart mechanism (where OPPAT backend reads the data files and sends data to the browser)
 2. You can also create a standalone web page which is the equivalent of the 'regular chart mechanism' but can be exchanged with other users... the standalone web page has the all the scripts and data built-in so it could be emailed to someone and they could load it in their browser. See the html files in sample_html_files referenced above and (for a longer version of lnx_mem_bw4) see the compressed file [sample_html_files/lnx_mem_bw4_full.html.zip](sample_html_files\lnx_mem_bw4_full.html.zip)
-3. You can '--save ' a data json file and then --load the file later. The saved json file has is basically the OPPAT data which needs to be sent to the browser by OPPAT.  This avoids re-reading the input perf/xperf files but it won't pick up any changes in charts.json. The full HTML file created with the --web_file option is only slightly bigger than the --save file. This option requires building oppat. See the sample 'saved' files in sample_data_json_files subdir.
+3. You can '--save ' a data json file and then --load the file later. The saved json file has is the data which OPPAT needs to send to the browser.  This avoids re-reading the input perf/xperf files but it won't pick up any changes made in charts.json. The full HTML file created with the --web_file option is only slightly bigger than the --save file. The --save/--load mode requires building oppat. See the sample 'saved' files in sample_data_json_files subdir.
 
 Viz general info
 - chart all the data in a browser (on Linux or Windows)
 - charts are defined in a json file so you can add events and charts without recompiling OPPAT
 - browser interface is sort of like Windows WPA (navbar on left). See [nav bar screenshot](images/left_navbar.png)
     - charts are grouped by category (GPU, CPU, Power, etc)
-    - charts can be all hidden or selectively displayed
+        - categories are defined and assigned in input_files/charts.json
+    - charts can be all hidden or selectively displayed by clicking on the chart in the navbar.
     - hovering over a chart title in the left nav menu scrolls that chart into view
 - data from one group of files can be plotted along side a different group
     - so you can say, compare a Linux perf performance vs a Windows ETW run
+        - See [a screenshot comparing linux vs windows power usage](images/compare_lnx_vs_win.png)
+        - I only have access to battery power on both linux and windows.
+        - Many sites have much better power data (voltages/currents/power at the msec (or better) rate). It would be easy to incorporate these types of power data (such as from Kratos or Qualcomm MDPs) but I don't have access to the data.
     - or compare 2 different runs on the same platform
     - a file group tag (file_tag) is prefixed to the title to distinguish charts
     - Charts with the same title are plotted one after the other to allow easy comparison
