@@ -21,7 +21,8 @@ Open Power/Performance Analysis Tool (OPPAT) is a cross-OS, cross-architecture P
 The project web page (under construction) is https://patinnc.github.io
 
 An example chart:  ![a screen shot of the cpu busy chart](images/cpu_busy.png)
-For sample visualzation files, download [windows sample html file](sample_html_files/win_mem_bw4.html) or [this Linux sample html file](sample_html_files/lnx_mem_bw4.html) and load them in your browser.
+
+Full (but covering a short interval of ~1 second) visualzation files, see [windows sample html file](sample_html_files/win_mem_bw4.html) or [this Linux sample html file](sample_html_files/lnx_mem_bw4.html).
 
 The above files are ~1 second intervals cut from 2 different ~8 second runs. See [the full 8 second Linux run sample html compressed file here](sample_html_files/lnx_mem_bw4_full.html.zip) for a more complete (but compressed) file. You will have to download the file, unzip it, then load it in your browser. The browser URL syntax to load an file is: file:///C:/somepath/lnx_mem_bw4_full.html
 
@@ -50,7 +51,8 @@ OPPAT has 3 visualization modes:
 Viz general info
 - chart all the data in a browser (on Linux or Windows)
 - charts are defined in a json file so you can add events and charts without recompiling OPPAT
-- browser interface is sort of like Windows WPA (navbar on left). See [nav bar screenshot](images/left_navbar.png)
+- browser interface is sort of like Windows WPA (navbar on left). 
+    - See ![nav bar screenshot](images/left_navbar.png)
     - charts are grouped by category (GPU, CPU, Power, etc)
         - categories are defined and assigned in input_files/charts.json
     - charts can be all hidden or selectively displayed by clicking on the chart in the navbar.
@@ -69,8 +71,8 @@ Viz general info
 #### chart features:
 - hovering over a section of a line of the chart shows the data point for that line at that point
     - this doesn't work for the vertical lines since they are just connecting 2 points... only the horizontal pieces of each line is searched for the data value
-    - See a [screen shot of hovering over event](images/hover_ballon.png). This shows the relative time of the (CSwtich) event, some info like process/pid/tid and the line number in the text file so you can get more info.
-    - See a [screen shot of event with callstack](images/hover_callstack.png). This shows the callstack info as well.
+    - See a ![screen shot of hovering over event](images/hover_ballon.png). This shows the relative time of the (CSwtich) event, some info like process/pid/tid and the line number in the text file so you can get more info.
+    - See a ![screen shot of event with callstack](images/hover_callstack.png). This shows the callstack info as well.
 - zooming
     - unlimited zooming in to nanosec level and zooming back out.
         - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
@@ -95,9 +97,10 @@ Viz general info
     - using the slider below the chart 
     - panning works at any zoom level
     - a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
-    - See a [screen shot of panning](images/pan_1.png). This shows the panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
+    - See a ![screen shot of panning](images/pan_1.png).
+    - Above shows the panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
 - hovering on a chart legend entry highlights that line. 
-    - [Here is a screenshot where 'pkg' (package) power is highlighted](images/chart_pwr_highlighted.png)
+    - ![Here is a screenshot where 'pkg' (package) power is highlighted](images/chart_pwr_highlighted.png)
 - clicking on a chart legend entry toggles the visibility of that line.
 - double clicking a legend entry makes only that entry visible/hidden
     - [Here is a screenshot where 'pkg' power was double clicked so only the pkg line is visible.](images/chart_pwr_show_just_1.png). The y-axis is adjusted to min/max of the displayed variable(s). The 'not shown' lines are greyed-out in the legend. If you hover over a 'not shown' line in the legend it will be drawn (while you are hovering on the legend item). You can get all the items to display again by double-clicking a 'not-shown' legend entry. This will show all the 'not shown' lines but it will toggle off the line you just clicked... so single-click the item you just double-clicked. I know it sounds confusing. 
@@ -105,7 +108,7 @@ Viz general info
 
 #### chart types:
 - 'cpu busy' chart: a kernelshark-like chart showing the cpu occupancy by pid/thread. See kernelshark reference http://rostedt.homelinux.com/kernelshark/
-    - See [a screen shot of the cpu busy chart](images/cpu_busy.png)
+    - See ![a screen shot of the cpu busy chart](images/cpu_busy.png)
         - The chart shows, for each cpu, the process/pid/tid running at any point in time. The idle process is not drawn. For 'cpu 1' on the screenshot, the green oval is around the 'context switch' part of the chart. Above each cpus' context switch info, cpu busy shows the events that present in the same file as the context switch event. The red oval on the cpu 1 line shows the event part of the chart.
     - the chart is based on the context switch event and shows the thread running on each cpu at any given time
     - the context switch event is the Linux sched:sched_switch or the Windows ETW CSwitch event.
@@ -121,8 +124,11 @@ Viz general info
 - stacked charts
     - Stacked charts can cause a lot more data to be generated than line charts. For example, drawing a line chart of when a particular thread is running only depends on that thread. Drawing a stacked chart for running threads is different: a context switch event on any thread will change all the other running threads... so if you have N cpus, you will get N-1 more things to draw per event for stacked charts.
 - flamegraphs. For each perf event which has callstacks and is in same file as the sched_switch/CSwitch event, a flamegraph is created.
-    - See [a screenshot of a typical default flamegraph](images/flamegraph_typical.png). Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
-    - If you click on layer of the chart, it expands higher such that the text fits. If you click on the lowest layer then it covers all data for the interval of the 'owning chart'. See [a screenshot of a zoomed flamegraph](images/flamegraph_zoomed.png). Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
+    - See ![a screenshot of a typical default flamegraph](images/flamegraph_typical.png).
+    - Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
+    - If you click on layer of the chart, it expands higher such that the text fits. If you click on the lowest layer then it covers all data for the interval of the 'owning chart'.
+    - See ![a screenshot of a zoomed flamegraph](images/flamegraph_zoomed.png).
+    - Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
     - if right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
