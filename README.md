@@ -104,6 +104,8 @@ Viz general info
 
 #### chart types:
 - 'cpu busy' chart: a kernelshark-like chart showing the cpu occupancy by pid/thread. See kernelshark reference http://rostedt.homelinux.com/kernelshark/
+    - See [a screen shot of the cpu busy chart](images/cpu_busy.png)
+        - The chart shows, for each cpu, the process/pid/tid running at any point in time. The idle process is not drawn. For 'cpu 1' on the screenshot, the green oval is around the 'context switch' part of the chart. Above each cpus' context switch info, cpu busy shows the events that present in the same file as the context switch event. The red oval on the cpu 1 line shows the event part of the chart.
     - the chart is based on the context switch event and shows the thread running on each cpu at any given time
     - the context switch event is the Linux sched:sched_switch or the Windows ETW CSwitch event.
     - if there are more events than the context switch in the data file then all of the other events are represented as vertical dashes above the cpu.
@@ -112,9 +114,13 @@ Viz general info
     - The line charts are probably more accurately called step charts since each event (so far) has a duration and these 'durations' are represented by horizontal segments and joined by vertical segments.
     - the vertical part of the step chart can fill a chart if chart lines have a lot of variation
     - you can select (in the left nav bar) to not connect the horizontal segments of each line... so the chart becomes a sort of 'scattered dash' chart. The 'horizonatal dashes' are the actual data points. When you switch from step chart to dash chart, the chart is not redrawn until there is some 'redraw' request (like zoom/pan or highlight (by hovering over a legend entry)).
+        - See [a screenshot of cpu_idle power states using line chart](images/cpu_idle_states.png). The connecting lines blot out the information in the chart.
+        - See [a screenshot of cpu_idle power states using scattered-dash chart](images/cpu_idle_states_dashes.png). The chart now shows a horizontal dash for data point (the width of the dash is the duration of the event). Now we can see more information but this chart also shows a drawback with my charting logic: a lot of the data is at the max value and at the min Y value of the chart and it gets obscured.
+
 - stacked charts
     - Stacked charts can cause a lot more data to be generated than line charts. For example, drawing a line chart of when a particular thread is running only depends on that thread. Drawing a stacked chart for running threads is different: a context switch event on any thread will change all the other running threads... so if you have N cpus, you will get N-1 more things to draw per event for stacked charts.
 - flamegraphs. For each perf event which has callstacks and is in same file as the sched_switch/CSwitch event, a flamegraph is created.
+    - See [a screenshot of a typical default flamegraph](images/flamegraph_typical.png). Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
     - if right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
