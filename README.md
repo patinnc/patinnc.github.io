@@ -106,10 +106,12 @@ Viz general info
     - See a ![screen shot of panning](images/pan_1.png).
     - Above shows the panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
 - hovering on a chart legend entry highlights that line. 
-    - ![Here is a screenshot where 'pkg' (package) power is highlighted](images/chart_pwr_highlighted.png)
+    - Below is a screenshot where 'pkg' (package) power is highlighted
+    - ![pkg power highlighted](images/chart_pwr_highlighted.png)
 - clicking on a chart legend entry toggles the visibility of that line.
 - double clicking a legend entry makes only that entry visible/hidden
-    - [Here is a screenshot where 'pkg' power was double clicked so only the pkg line is visible.](images/chart_pwr_show_just_1.png). The y-axis is adjusted to min/max of the displayed variable(s). The 'not shown' lines are greyed-out in the legend. If you hover over a 'not shown' line in the legend it will be drawn (while you are hovering on the legend item). You can get all the items to display again by double-clicking a 'not-shown' legend entry. This will show all the 'not shown' lines but it will toggle off the line you just clicked... so single-click the item you just double-clicked. I know it sounds confusing. 
+    - ![Here is a screenshot where 'pkg' power was double clicked so only the pkg line is visible.](images/chart_pwr_show_just_1.png)
+    - Above shows the y-axis is adjusted to min/max of the displayed variable(s). The 'not shown' lines are greyed-out in the legend. If you hover over a 'not shown' line in the legend it will be drawn (while you are hovering on the legend item). You can get all the items to display again by double-clicking a 'not-shown' legend entry. This will show all the 'not shown' lines but it will toggle off the line you just clicked... so single-click the item you just double-clicked. I know it sounds confusing. 
 - if a legend entry is hidden and you hover over it, it will be displayed until you hover out
 
 #### chart types:
