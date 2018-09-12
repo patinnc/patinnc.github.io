@@ -59,7 +59,8 @@ Viz general info
     - hovering over a chart title in the left nav menu scrolls that chart into view
 - data from one group of files can be plotted along side a different group
     - so you can say, compare a Linux perf performance vs a Windows ETW run
-        - See [a screenshot comparing linux vs windows power usage](images/compare_lnx_vs_win.png)
+        - Below compares linux vs windows power usage:
+   - ![power usage](images/compare_lnx_vs_win.png)
         - I only have access to battery power on both linux and windows.
         - Many sites have much better power data (voltages/currents/power at the msec (or better) rate). It would be easy to incorporate these types of power data (such as from Kratos or Qualcomm MDPs) but I don't have access to the data.
     - or compare 2 different runs on the same platform
