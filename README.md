@@ -20,7 +20,8 @@ Open Power/Performance Analysis Tool (OPPAT) is a cross-OS, cross-architecture P
 
 The project web page (under construction) is https://patinnc.github.io
 
-An example chart:  ![a screen shot of the cpu busy chart](images/cpu_busy.png)
+Below is one of the OPPAT charts:
+![a screen shot of the cpu busy chart](images/cpu_busy.png)
 
 Full (but covering a short interval of ~1 second) visualzation files, see [windows sample html file](sample_html_files/win_mem_bw4.html) or [this Linux sample html file](sample_html_files/lnx_mem_bw4.html).
 
@@ -52,15 +53,16 @@ Viz general info
 - chart all the data in a browser (on Linux or Windows)
 - charts are defined in a json file so you can add events and charts without recompiling OPPAT
 - browser interface is sort of like Windows WPA (navbar on left). 
-    - See ![nav bar screenshot](images/left_navbar.png)
+    - Below shows the left navbar (left side sliding menu).
+    - ![nav bar screenshot](images/left_navbar.png)
     - charts are grouped by category (GPU, CPU, Power, etc)
         - categories are defined and assigned in input_files/charts.json
     - charts can be all hidden or selectively displayed by clicking on the chart in the navbar.
     - hovering over a chart title in the left nav menu scrolls that chart into view
 - data from one group of files can be plotted along side a different group
     - so you can say, compare a Linux perf performance vs a Windows ETW run
-        - Below compares linux vs windows power usage:
-   - ![power usage](images/compare_lnx_vs_win.png)
+    - Below chart show Linux vs Windows power usage:
+    - ![power usage](images/compare_lnx_vs_win.png)
         - I only have access to battery power on both linux and windows.
         - Many sites have much better power data (voltages/currents/power at the msec (or better) rate). It would be easy to incorporate these types of power data (such as from Kratos or Qualcomm MDPs) but I don't have access to the data.
     - or compare 2 different runs on the same platform
@@ -72,12 +74,15 @@ Viz general info
 #### chart features:
 - hovering over a section of a line of the chart shows the data point for that line at that point
     - this doesn't work for the vertical lines since they are just connecting 2 points... only the horizontal pieces of each line is searched for the data value
-    - See a ![screen shot of hovering over event](images/hover_ballon.png). This shows the relative time of the (CSwtich) event, some info like process/pid/tid and the line number in the text file so you can get more info.
-    - See a ![screen shot of event with callstack](images/hover_callstack.png). This shows the callstack info as well.
+    - Below is a screenshot of hovering over event. This shows the relative time of the (CSwtich) event, some info like process/pid/tid and the line number in the text file so you can get more info.
+    - ![screen shot of hovering over event](images/hover_ballon.png)
+    - Below is a screenshot showing the callstack info (if any) for events.
+    - ![screen shot of event with callstack](images/hover_callstack.png)
 - zooming
     - unlimited zooming in to nanosec level and zooming back out.
         - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
-        - See a [screen shot of zooming at microsecond level](images/zoom_1.png). This shows the callstack for sched_switch event where spin.x is blocked by doing memory mapping operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
+        - below is a screenshot showing zooming to the microsecond level.  This shows the callstack for sched_switch event where spin.x is blocked by doing memory mapping operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
+        - ![screen shot of zooming at microsecond level](images/zoom_1.png).
     - charts can be zoomed individually or charts with the same file_tag can be linked so that zooming/panning 1 chart changes the interval of all the charts with the same file_tag
         - Scroll to the bottom of the left navbar and click on 'Zoom/Pan: Unlinked'. This will change the menu item to 'Zoom/Pan: Linked'. This will zoom/pan all the charts in a file group to the most recent zoom/pan absolute time. This will take some time to redraw all the charts. 
              - Initially each chart is drawn displaying all of the available data. If your charts are from different sources then the T_begin and T_end (for charts from different sources) is probably different.
