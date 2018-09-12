@@ -72,6 +72,7 @@ Viz general info
     - See a [screen shot of event with callstack](images/hover_callstack.png). This shows the callstack info as well.
 - unlimited zooming in to nanosec level and zooming back out.
     - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
+    - See a [screen shot of zooming at microsecond level](images/zoom_1.png). This shows the callstack for context switch where spin.x is blocked by doing virtual memory operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
 - panning at any level
 - a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
 - charts can be zoomed individually or charts with the same file_tag can be linked so that zooming/panning 1 chart changes the interval of all the charts with the same file_tag
