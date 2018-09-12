@@ -103,8 +103,8 @@ Viz general info
     - using the slider below the chart 
     - panning works at any zoom level
     - a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
-    - See a ![screen shot of panning](images/pan_1.png).
-    - Above shows the panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
+    - Below shows panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
+    - ![screen shot of panning](images/pan_1.png).
 - hovering on a chart legend entry highlights that line. 
     - Below is a screenshot where 'pkg' (package) power is highlighted
     - ![pkg power highlighted](images/chart_pwr_highlighted.png)
@@ -116,8 +116,8 @@ Viz general info
 
 #### chart types:
 - 'cpu busy' chart: a kernelshark-like chart showing the cpu occupancy by pid/thread. See kernelshark reference http://rostedt.homelinux.com/kernelshark/
-    - See ![a screen shot of the cpu busy chart](images/cpu_busy.png)
-        - The chart shows, for each cpu, the process/pid/tid running at any point in time. The idle process is not drawn. For 'cpu 1' on the screenshot, the green oval is around the 'context switch' part of the chart. Above each cpus' context switch info, cpu busy shows the events that present in the same file as the context switch event. The red oval on the cpu 1 line shows the event part of the chart.
+    - Below is a screenshot of the cpu busy chart. The chart shows, for each cpu, the process/pid/tid running at any point in time. The idle process is not drawn. For 'cpu 1' on the screenshot, the green oval is around the 'context switch' part of the chart. Above each cpus' context switch info, cpu busy shows the events that present in the same file as the context switch event. The red oval on the cpu 1 line shows the event part of the chart.
+    - ![a screen shot of the cpu busy chart](images/cpu_busy.png)
     - the chart is based on the context switch event and shows the thread running on each cpu at any given time
     - the context switch event is the Linux sched:sched_switch or the Windows ETW CSwitch event.
     - if there are more events than the context switch in the data file then all of the other events are represented as vertical dashes above the cpu.
@@ -126,8 +126,10 @@ Viz general info
     - The line charts are probably more accurately called step charts since each event (so far) has a duration and these 'durations' are represented by horizontal segments and joined by vertical segments.
     - the vertical part of the step chart can fill a chart if chart lines have a lot of variation
     - you can select (in the left nav bar) to not connect the horizontal segments of each line... so the chart becomes a sort of 'scattered dash' chart. The 'horizonatal dashes' are the actual data points. When you switch from step chart to dash chart, the chart is not redrawn until there is some 'redraw' request (like zoom/pan or highlight (by hovering over a legend entry)).
-        - See [a screenshot of cpu_idle power states using line chart](images/cpu_idle_states.png). The connecting lines blot out the information in the chart.
-        - See [a screenshot of cpu_idle power states using scattered-dash chart](images/cpu_idle_states_dashes.png). The chart now shows a horizontal dash for data point (the width of the dash is the duration of the event). Now we can see more information but this chart also shows a drawback with my charting logic: a lot of the data is at the max value and at the min Y value of the chart and it gets obscured.
+        - Below is a screenshot of cpu_idle power states using line chart. The connecting lines blot out the information in the chart.
+        - ![screenshot of cpu_idle power states using line chart](images/cpu_idle_states.png)
+        - Below is a screenshot of cpu_idle power states using scattered-dash chart. The chart now shows a horizontal dash for data point (the width of the dash is the duration of the event). Now we can see more information but this chart also shows a drawback with my charting logic: a lot of the data is at the max value and at the min Y value of the chart and it gets obscured.
+        - ![a screenshot of cpu_idle power states using scattered-dash chart](images/cpu_idle_states_dashes.png)
 
 - stacked charts
     - Stacked charts can cause a lot more data to be generated than line charts. For example, drawing a line chart of when a particular thread is running only depends on that thread. Drawing a stacked chart for running threads is different: a context switch event on any thread will change all the other running threads... so if you have N cpus, you will get N-1 more things to draw per event for stacked charts.
@@ -154,14 +156,15 @@ Viz general info
     - both 'on cpu', 'off cpu' and 'run queue' flamegraphs are drawn.
         - 'on cpu' is the callstack for what the thread was doing while it was running on the cpu... so the SampledProfile callstacks or perf cpu-clock callstacks indicate what the thread was doing when it was running on the cpu
         - 'off cpu' shows, for threads that not running, how long they were waiting and the callstack when they got swapped out.
-            - See [screenshot of a wait_time chart](images/off_cpu.png)
-            - The screenshot above shows (in the flamegraph) that 'wait.x' is waiting on nanosleep.
+            - Below is a screenshot of the off-cpu or wait-time chart. The popup shows (in the flamegraph) that 'wait.x' is waiting on nanosleep.
+            - ![screenshot of a wait_time chart](images/off_cpu.png)
             - The swap 'state' (and on ETW the 'reason') is shown as a level above the process. Usually most threads will be sleeping or not running but this helps one to answer the question: "when my thread didn't run... what was it waiting on?". 
             - Showing the 'state' for the context switch lets you see: 
             - for example, whether a thread is waiting on an non-interruptible sleep (state==D on Linux...usually IO)
             - interruptible sleep (state=S... frequently a nanosleep or futex)
         - 'run queue' shows the threads that got swapped and were in a running or runnable state. So this chart shows saturation of the CPU if there are threads in a runnable state but not running.
-            - See [screenshot of a run_queue chart](images/run_queue.png). This chart shows the amount time a thread didn't run because there wasn't enough CPU. That is, it was ready to run but something else was using the CPU. Each flamegraph shows the total covered in the graph. In the case of the run_queue chart, it shows ~159 msecs in wait time. So, given that spin.x has about 20 seconds run time and 0.159 secs 'wait' time, that doesn't seem too bad.
+            - Below is screenshot of the run_queue chart. This chart shows the amount time a thread didn't run because there wasn't enough CPU. That is, it was ready to run but something else was using the CPU. Each flamegraph shows the total covered in the graph. In the case of the run_queue chart, it shows ~159 msecs in wait time. So, given that spin.x has about 20 seconds run time and 0.159 secs 'wait' time, that doesn't seem too bad.
+            - ![screenshot of a run_queue chart](images/run_queue.png)
 - I didn't have a canvas-based chart library to use so the charts are kind of crude... I didn't want to spend too much time creating the charts if there is something better out there. The charts have to use the HTML canvas (not SVGs, d3.js etc) due to the amount of data.
 
 
