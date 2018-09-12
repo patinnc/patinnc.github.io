@@ -76,24 +76,30 @@ Viz general info
         - See a [screen shot of zooming at microsecond level](images/zoom_1.png). This shows the callstack for sched_switch event where spin.x is blocked by doing memory mapping operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
     - charts can be zoomed individually or charts with the same file_tag can be linked so that zooming/panning 1 chart changes the interval of all the charts with the same file_tag
         - Scroll to the bottom of the left navbar and click on 'Zoom/Pan: Unlinked'. This will change the menu item to 'Zoom/Pan: Linked'. This will zoom/pan all the charts in a file group to the most recent zoom/pan absolute time. This will take some time to redraw all the charts. 
-             - Initially each chart is drawn displaying all of the available data. If youor charts from different sources then the T_begin and T_end is probably different.
+             - Initially each chart is drawn displaying all of the available data. If your charts are from different sources then the T_begin and T_end (for charts from different sources) is probably different.
              - Once a zoom/pan operation is done all and linking is in effect then all charts in the file group will zoom/pan to the same absolute interval.
+                 - This is why the 'clock' used for each source has to be the same.
+                 - OPPAT could translate from one clock to another (such as between gettime(CLOCK_MONOTONIC) and gettimeofday()) but that logic 
              - Any flamegraphs for an interval are always zoomed to the 'owning charts' interval regardless of the linking status.
     - You can zoom in/out by:
-        - mouse wheel vertically on the chart area. The chart zooms on the time in the center of the chart.
-             - on my laptop this is doing 2 fingers on vertically on the touchpad
-        - clicking on chart and dragging the mouse to the right and releasing the mouse (the chart will zoom to the selected interval)
-        - clicking on chart and dragging the mouse to the left and releasing the mouse will zoom out in sort of inversely proportional to how much of the chart you selected. That is, if you left drag almost the whole chart area then the chart will zoom back out ~2x. If you just left drag a small interval then the chart will zoom out the ~whole way.
-        - you can also unzoom by (on my laptop) doing a touchpad 2 finger vertical scroll in the opposite direction of zoom 
+        - zoom in: mouse wheel vertically on the chart area. The chart zooms on the time in the center of the chart.
+             - on my laptop this is doing scrolling 2 fingers vertically on the touchpad
+        - zoom in: clicking on chart and dragging the mouse to the right and releasing the mouse (the chart will zoom to the selected interval)
+        - zoom out: clicking on chart and dragging the mouse to the left and releasing the mouse will zoom out in sort of inversely proportional to how much of the chart you selected. That is, if you left drag almost the whole chart area then the chart will zoom back out ~2x. If you just left drag a small interval then the chart will zoom out the ~whole way.
+        - zoom out: on my laptop, doing a touchpad 2 finger vertical scroll in the opposite direction of zoom 
+    - You have to be careful where the cursor is... You might inadvertently zoom a chart when you mean to scroll the list of charts. So I usually put the cursor on the left edge of the screen when I want to scroll the charts.
+
 - panning 
     - on my laptop this is doing 2 fingers on horizontal scroll motion on the touchpad
     - using the slider below the chart 
-    - panning at any level
+    - panning works at any zoom level
     - a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
     - See a [screen shot of panning](images/pan_1.png). This shows the panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
-- hovering on a chart legend entry highlights that line.
+- hovering on a chart legend entry highlights that line. 
+    - [Here is a screenshot where 'pkg' (package) power is highlighted](images/chart_pwr_highlighted.png)
 - clicking on a chart legend entry toggles the visibility of that line.
 - double clicking a legend entry makes only that entry visible/hidden
+    - [Here is a screenshot where 'pkg' power was double clicked so only the pkg line is visible.](images/chart_pwr_show_just_1.png). The y-axis is adjusted to min/max of the displayed variable(s). The 'not shown' lines are greyed-out in the legend. If you hover over a 'not shown' line in the legend it will be drawn (while you are hovering on the legend item). You can get all the items to display again by double-clicking a 'not-shown' legend entry. This will show all the 'not shown' lines but it will toggle off the line you just clicked... so single-click the item you just double-clicked. I know it sounds confusing. 
 - if a legend entry is hidden and you hover over it, it will be displayed until you hover out
 
 #### chart types:
