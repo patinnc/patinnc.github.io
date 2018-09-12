@@ -20,6 +20,7 @@ Open Power/Performance Analysis Tool (OPPAT) is a cross-OS, cross-architecture P
 
 The project web page (under construction) is https://patinnc.github.io
 
+An example chart:  ![a screen shot of the cpu busy chart](images/cpu_busy.png)
 For sample visualzation files, download [windows sample html file](sample_html_files/win_mem_bw4.html) or [this Linux sample html file](sample_html_files/lnx_mem_bw4.html) and load them in your browser.
 
 The above files are ~1 second intervals cut from 2 different ~8 second runs. See [the full 8 second Linux run sample html compressed file here](sample_html_files/lnx_mem_bw4_full.html.zip) for a more complete (but compressed) file. You will have to download the file, unzip it, then load it in your browser. The browser URL syntax to load an file is: file:///C:/somepath/lnx_mem_bw4_full.html
