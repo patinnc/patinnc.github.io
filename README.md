@@ -75,6 +75,10 @@ Viz general info
         - there are probably orders of magnitude more points to plot than pixels so more data is displayed as you zoom in.
         - See a [screen shot of zooming at microsecond level](images/zoom_1.png). This shows the callstack for sched_switch event where spin.x is blocked by doing memory mapping operation and going idle. The 'cpu busy' chart shows 'going idle' as blank.
     - charts can be zoomed individually or charts with the same file_tag can be linked so that zooming/panning 1 chart changes the interval of all the charts with the same file_tag
+        - Scroll to the bottom of the left navbar and click on 'Zoom/Pan: Unlinked'. This will change the menu item to 'Zoom/Pan: Linked'. This will zoom/pan all the charts in a file group to the most recent zoom/pan absolute time. This will take some time to redraw all the charts. 
+             - Initially each chart is drawn displaying all of the available data. If youor charts from different sources then the T_begin and T_end is probably different.
+             - Once a zoom/pan operation is done all and linking is in effect then all charts in the file group will zoom/pan to the same absolute interval.
+             - Any flamegraphs for an interval are always zoomed to the 'owning charts' interval regardless of the linking status.
     - You can zoom in/out by:
         - mouse wheel vertically on the chart area. The chart zooms on the time in the center of the chart.
              - on my laptop this is doing 2 fingers on vertically on the touchpad
