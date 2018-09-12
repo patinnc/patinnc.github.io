@@ -134,10 +134,11 @@ Viz general info
 - stacked charts
     - Stacked charts can cause a lot more data to be generated than line charts. For example, drawing a line chart of when a particular thread is running only depends on that thread. Drawing a stacked chart for running threads is different: a context switch event on any thread will change all the other running threads... so if you have N cpus, you will get N-1 more things to draw per event for stacked charts.
 - flamegraphs. For each perf event which has callstacks and is in same file as the sched_switch/CSwitch event, a flamegraph is created.
-    - See ![a screenshot of a typical default flamegraph](images/flamegraph_typical.png).
-    - Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
+    - Below is a screenshot of a typical default flamegraph.  Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
+    - ![a screenshot of a typical default flamegraph](images/flamegraph_typical.png).
     - If you click on layer of the chart, it expands higher such that the text fits. If you click on the lowest layer then it covers all data for the interval of the 'owning chart'.
-    - See ![a screenshot of a zoomed flamegraph](images/flamegraph_zoomed.png).
+    - Below is a screenshot of a zoomed flamegraph.
+    - ![a screenshot of a zoomed flamegraph](images/flamegraph_zoomed.png).
     - Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
