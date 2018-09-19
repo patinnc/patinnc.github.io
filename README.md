@@ -251,20 +251,23 @@ The steps for data collection using the scripts:
 --------------------------------------------------------------------------------
 ## Derived Events
 'Derived events' are new events created from 1 or more events in a data file.
-- Say you want to plot the ETW Win32k InputDeviceRead event track when the user is typing or moving the mouse.
-- ETW has 2 events: Microsoft-Windows-Win32k/InputDeviceRead/win:Start and Microsoft-Windows-Win32k/InputDeviceRead/win:Stop
-    - So we know when the system started reading input and we know when it stopped reading input
-    - But OPPAT plots 1 event per chart (usually... the cpu_busy chart is different)
+- Say you want to use the ETW Win32k InputDeviceRead events to track when the user is typing or moving the mouse.
+    - ETW has 2 events:
+        - Microsoft-Windows-Win32k/InputDeviceRead/win:Start
+        - Microsoft-Windows-Win32k/InputDeviceRead/win:Stop
+    - So with the 2 above events we know when the system started reading input and we know when it stopped reading input
+    - But OPPAT plots just 1 event per chart (usually... the cpu_busy chart is different)
+    - We need a new event that marks the end of the InputDeviceRead and the duration of the event
 - The derived event needs:
     - a new event name (in chart.json... see for example the InputDeviceRead event)
     - a LUA file and routine in src_lua subdir
     - 1 or more 'used events' from which the new event is derived
          - the derived events have to be in the same file
          - For the InputDeviceRead example, the 2 Win32k InputDeviceRead Start/Stop events above are used.
-- The 'used events' are passed to the LUA file/routine (along with the column headers for the 'used events')
+- The 'used events' are passed to the LUA file/routine (along with the column headers for the 'used events') as the events are encountered in the input trace file
     - In the InputDeviceRead lua script:
          - the script records the timestamp and process/pid/tid of a 'start' event
-         - when the script gets a matching 'Stop' event, the script computes a duration for the new event and passes it back to OPPAT
+         - when the script gets a matching 'Stop' event (matching on process/pid/tid), the script computes a duration for the new event and passes it back to OPPAT
 - A 'trigger event' is defined in chart.json and if the current event is the 'trigger event' then (after calling the lua script) the new event is emitted with the new data field(s) from the lua script.
 - The new event will have:
    - the name (from the chart.json evt_name field)
