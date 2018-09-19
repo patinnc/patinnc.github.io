@@ -11,6 +11,7 @@ Open Power/Performance Analysis Tool (OPPAT)
 - [Data collection for OPPAT](#data-collection-for-oppat)
 - [Building OPPAT](#building-oppat)
 - [Running OPPAT](#running-oppat)
+- [Derived Events](#derived-events)
 - [Using the browswer GUI Interface](#using-the-browswer-gui-interface)
 - [Limitations](#limitations)
 
@@ -248,6 +249,29 @@ The steps for data collection using the scripts:
 - Then you can load the file into the browser with the URL address: ```file:///C:/some_path/oppat/tst2.html```
 
 --------------------------------------------------------------------------------
+## Derived Events
+'Derived events' are new events created from 1 or more events in a data file.
+- Say you want to plot the ETW Win32k InputDeviceRead event track when the user is typing or moving the mouse.
+- ETW has 2 events: Microsoft-Windows-Win32k/InputDeviceRead/win:Start and Microsoft-Windows-Win32k/InputDeviceRead/win:Stop
+    - So we know when the system started reading input and we know when it stopped reading input
+    - But OPPAT plots 1 event per chart (usually... the cpu_busy chart is different)
+- The derived event needs:
+    - a new event name (in chart.json... see for example the InputDeviceRead event)
+    - a LUA file and routine in src_lua subdir
+    - 1 or more 'used events' from which the new event is derived
+         - the derived events have to be in the same file
+         - For the InputDeviceRead example, the 2 Win32k InputDeviceRead Start/Stop events above are used.
+- The 'used events' are passed to the LUA file/routine (along with the column headers for the 'used events')
+    - In the InputDeviceRead lua script:
+         - the script records the timestamp and process/pid/tid of a 'start' event
+         - when the script gets a matching 'Stop' event, the script computes a duration for the new event and passes it back to OPPAT
+- A 'trigger event' is defined in chart.json and if the current event is the 'trigger event' then (after calling the lua script) the new event is emitted with the new data field(s) from the lua script.
+- The new event will have:
+   - the name (from the chart.json evt_name field)
+   - The data from the trigger event (except the event name and the new fields (appended)
+- I have tested this on ETW data but not yet on perf/trace-cmd data
+
+--------------------------------------------------------------------------------
 ## Using the browser GUI Interface
 TBD
 
@@ -291,8 +315,8 @@ TBD
 {"cur_dir":"%root_dir%/oppat_data/lnx/mem_bw4"},
 {"cur_tag":"lnx_mem_bw4"},
 {"bin_file":"prf_energy.txt", "txt_file":"prf_energy2.txt", "wait_file":"wait.txt", "tag":"%cur_tag%", "type":"LUA"},
-{"bin_file":"tc_trace.dat",  "txt_file":"tc_trace.txt", "tag":"%cur_tag%", "type":"TRACE_CMD"},
 {"bin_file":"prf_trace.data", "txt_file":"prf_trace.txt", "tag":"%cur_tag%", "type":"PERF"},
+{"bin_file":"tc_trace.dat",  "txt_file":"tc_trace.txt", "tag":"%cur_tag%", "type":"TRACE_CMD"},
 
 ```
 [comment]: <> (C:\data\ppat\ppat>make && bin\oppat.exe -u lnx_mem_bwx -r \data\ppat\oppat_data\lnx\mem_bw4 --perf_bin prf_trace.data --perf_txt prf_trace.txt --tc_bin tc_trace.dat --tc_txt tc_trace.txt --lua_txt prf_energy2.txt --lua_bin prf_energy.txt --lua_wait wait.txt > tmp.jnk)
@@ -328,7 +352,11 @@ TBD
     - On my laptop (with 4 CPUs), running for 10 seconds of data collection runs fine.
     - Servers with lots of CPUs or running for a long time will probably blow up OPPAT currently.
     - The stacked chart can cause lots of data to be sent due to how it each event on one line is now stacked on every other line.
-- No mechanism yet to put more than 1 event on a chart... say for computing CPI (cycles per instruction).
+- Limited mechanism for a chart that needs more than 1 event on a chart...
+    - say for computing CPI (cycles per instruction).
+    - Or where you have one event that marks the 'start' of some action and another event that marks the 'end' of the action
+    - There is a 'derived events' logic that lets you create a new event from 1 or more other events
+    - See the derived event section
 - The user has to supply or install the data collection software:
     - on Windows xperf
         - See https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install 
