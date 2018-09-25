@@ -322,7 +322,6 @@ TBD
 {"bin_file":"tc_trace.dat",  "txt_file":"tc_trace.txt", "tag":"%cur_tag%", "type":"TRACE_CMD"},
 
 ```
-[comment]: <> (C:\data\ppat\ppat>make && bin\oppat.exe -u lnx_mem_bwx -r \data\ppat\oppat_data\lnx\mem_bw4 --perf_bin prf_trace.data --perf_txt prf_trace.txt --tc_bin tc_trace.dat --tc_txt tc_trace.txt --lua_txt prf_energy2.txt --lua_bin prf_energy.txt --lua_wait wait.txt > tmp.jnk)
 
 - Unfortunately you have to pay attention to proper JSON syntax (such as trailing ','s
 - Here is an explanation of the fields:
@@ -344,6 +343,7 @@ TBD
             - the 'prf_energy2.txt' file is created by the wait utility and contains battery usage data in the 'perf stat' format.
             - the 'wait.txt' file is created by the wait utility and shows the timestamp when the wait utility began
                 - Unfortunately 'perf stat' doesn't report a high resolution timestamp for the 'perf stat' start time
+
 
 --------------------------------------------------------------------------------
 ## Limitations
@@ -388,43 +388,4 @@ sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -
         - software events (cpu-clock) and callstacks for same
         - tracepoints (sched_switch and a bunch of others) with/without callstacks
 - Zooming Using touchpad scroll on Firefox seems to not work as well it works on Chrome
-
-
---------------------------------------------------------------------------------
-PCM Tools
---------------------------------------------------------------------------------
-
-PCM provides a number of command-line utilities for real-time monitoring:
-
-- pcm : basic processor monitoring utility (instructions per cycle, core frequency (including Intel(r) Turbo Boost Technology), memory and Intel(r) Quick Path Interconnect bandwidth, local and remote memory bandwidth, cache misses, core and CPU package sleep C-state residency, core and CPU package thermal headroom, cache utilization, CPU and memory energy consumption)
-- pcm-memory : monitor memory bandwidth (per-channel and per-DRAM DIMM rank)
-- pcm-pcie : monitor PCIe bandwidth per-socket
-- pcm-iio : monitor PCIe bandwidth per PCIe device
-- pcm-numa : monitor local and remote memory accesses
-- pcm-power : monitor sleep and energy states of processor, Intel(r) Quick Path Interconnect, DRAM memory, reasons of CPU frequency throttling and other energy-related metrics
-- pcm-tsx: monitor performance metrics for Intel(r) Transactional Synchronization Extensions
-- pcm-core and pmu-query: query and monitor arbitrary processor core events
-
-Graphical front ends:
-- pcm-sensor :  front-end for KDE KSysGuard
-- pcm-service :  front-end for Windows perfmon
-
-There is also a utility for reading/writing Intel model specific registers (pcm-msr) supported on Linux, Windows, Mac OS X and FreeBDS.
-
-And finally a daemon that stores core, memory and QPI counters in shared memory that can be be accessed by non-root users.
-
---------------------------------------------------------------------------------
-PCM API documentation
---------------------------------------------------------------------------------
-
-PCM API documentation is embedded in the source code and can be generated into html format from source using Doxygen (www.doxygen.org).
-
---------------------------------------------------------------------------------
-Building the PCM Tools
---------------------------------------------------------------------------------
-
-- Linux: just type 'make'. You will get all the utilities (pcm.x, pcm-memory.x, etc) built in the main PCM directory.
-- FreeBSD/DragonFlyBSD: just type 'gmake'. You will get all the utilities (pcm.x, pcm-memory.x, etc) built in the main PCM directory. If the 'gmake' command is not available, you need to install GNU make from ports (for example with 'pkg install gmake').
-- Windows: follow the steps in [WINDOWS_HOWTO.rtf](https://raw.githubusercontent.com/opcm/pcm/master/WINDOWS_HOWTO.rtf) (will will need to build or download additional drivers). You can also download PCM binaries from [appveyor build service](https://ci.appveyor.com/project/opcm/pcm/build/artifacts) and required Visual C++ Redistributable from [www.microsoft.com](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
-- Mac OS X: follow instructions in [MAC_HOWTO.txt](https://github.com/opcm/pcm/blob/master/MAC_HOWTO.txt)
 
