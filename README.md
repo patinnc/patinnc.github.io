@@ -365,6 +365,7 @@ TBD
         - You don't need to install the whole ADK... the 'select the parts you want to install' will let you select just the performance tools
     - on Linux perf and/or trace-cmd
         - For perf, try:
+
 ```bash
 sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
 ```
