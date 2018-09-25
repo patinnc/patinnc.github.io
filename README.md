@@ -348,7 +348,7 @@ TBD
 ## Limitations
 - The data is not reduced on the back-end so every event is sent to the browser... this can be a ton of data and overwhelm the browsers memory
     - I probably should have some data reduction logic but I wanted to get feedback first
-    - You can clip the files to a time range: 'oppat.exe -b abs_beg_time -e abs_beg_time'  to reduce the amout of data
+    - You can clip the files to a time range: ```oppat.exe -b abs_beg_time -e abs_beg_time```  to reduce the amout of data
         - This is a sort of crude mechanism right now. I just check the timestamp of the sample and discard it if the timestamp is outside the interval. If the sample has a duration it might actually have data for the selected interval...
     - There are many cases where you want to see each event as opposed to averages of events.
     - On my laptop (with 4 CPUs), running for 10 seconds of data collection runs fine.
