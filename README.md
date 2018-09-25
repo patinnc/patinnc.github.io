@@ -313,6 +313,7 @@ TBD
 ```
 
 - for Linux data files add an entry like below to the input_files\input_data_files.json file:
+
 ```json
 {"root_dir":"/data/ppat/"},
 {"cur_dir":"%root_dir%/oppat_data/lnx/mem_bw4"},
