@@ -323,7 +323,7 @@ TBD
 
 ```
 
-- Unfortunately you have to pay attention to proper JSON syntax (such as trailing ','s
+- Unfortunately you have to pay attention to proper JSON syntax (such as trailing ','s)
 - Here is an explanation of the fields:
     - The 'root_dir' field only needs to entered once in the json file.
         - It can be overridden on the oppat cmd line line with the '-r root_dir_path' option
@@ -345,7 +345,6 @@ TBD
                 - Unfortunately 'perf stat' doesn't report a high resolution timestamp for the 'perf stat' start time
 
 
---------------------------------------------------------------------------------
 ## Limitations
 - The data is not reduced on the back-end so every event is sent to the browser... this can be a ton of data and overwhelm the browsers memory
     - I probably should have some data reduction logic but I wanted to get feedback first
@@ -366,7 +365,7 @@ TBD
         - You don't need to install the whole ADK... the 'select the parts you want to install' will let you select just the performance tools
     - on Linux perf and/or trace-cmd
         - For perf, try:
-```
+```bash
 sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
 ```
 
