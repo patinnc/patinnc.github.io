@@ -326,8 +326,8 @@ TBD
 - Unfortunately you have to pay attention to proper JSON syntax (such as trailing ','s)
 - Here is an explanation of the fields:
     - The 'root_dir' field only needs to entered once in the json file.
-        - It can be overridden on the oppat cmd line line with the '-r root_dir_path' option
-        - If you use the '-r root_dir_path' option it is as if you had set ```"root_dir":"root_dir_path"``` in the json file
+        - It can be overridden on the oppat cmd line line with the ```-r root_dir_path``` option
+        - If you use the ```-r root_dir_path``` option it is as if you had set ```"root_dir":"root_dir_path"``` in the json file
         - the 'root_dir' field has to be on a line by itself.
     - The cur_dir field applies to all the files after the cur_dir line (until the next cur_dir line)
         - the '%root_dir% string in the cur_dir field is replaced with the current value of 'root_dir'.
