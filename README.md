@@ -106,10 +106,10 @@ Viz general info
 
 - panning 
     - on my laptop this is doing 2 fingers on horizontal scroll motion on the touchpad
-    - using the slider below the chart 
+    - using the green box on the thumbnail below the chart 
     - panning works at any zoom level
-    - a 'small squashed' picture of the full chart is put below each chart with a slider bar so you can navigate around the chart when you are zooming/panning
-    - Below shows panning the 'cpu busy' chart to T=0.55-2.67 seconds. The relative time and absolute begin time is highlighed in the left red box. The end time is highlighted in the right red box. The relative position on the slider is shows by the middle red box.
+    - a 'thumbnail' picture of the full chart is put below each chart with a cursor to slide along the thumbnail so you can navigate around the chart when you are zooming/panning
+    - Below shows panning the 'cpu busy' chart to T=1.8-2.37 seconds. The relative time and absolute begin time is highlighed in the left red oval. The end time is highlighted in the right-side red oval. The relative position on the thumbnail is shown by the middle red oval.
     - ![screen shot of panning](images/pan_1.png).
 - hovering on a chart legend entry highlights that line. 
     - Below is a screenshot where 'pkg' (package) power is highlighted
