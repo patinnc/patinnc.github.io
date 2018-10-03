@@ -149,12 +149,21 @@ Viz general info
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
     - the CPI (Clocks Per Instruction) flamegraph chart colors the process/pid/tid by the CPI for that stack.
         - ![Below is a sample unzoomed CPI chart](images/CPI_sml.png)
-        - You have to have cycles, instructions, and cpu-clock callstacks
+        - You have to have cycles, instructions, and cpu-clock (or sched_switch) callstacks
         - The width of the CPI 'flame' is based on the cpu-clock time.
         - The color is based on the CPI. A red to green to blue gradient at the top left of the chart shows the coloring.
         - Red is a low CPI (so lots of instructions per clock ... I think of it as 'hot')
-        - Blue is a high CPI (so few of instructions per clock ... I think of it as 'cold')
-        - ![Below is a sample zoomed CPI chart showing the coloring and the CPI.](images/CPI_zoom.png)
+        - Blue is a high CPI (so few instructions per clock ... I think of it as 'cold')
+        - ![Below is a sample zoomed CPI chart showing the coloring and the CPI. The 'spin.x' threads have been deselected in the cpu_busy legend so they don't appear in the flamegraph.](images/CPI_zoom.png)
+    - the GIPS (Giga (billion) Instructions Per Second) flamegraph chart colors the process/pid/tid by the GIPS for that stack.
+        - ![Below is a sample unzoomed GIPS chart](images/GIPS_sml.png)
+        - In the above chart note that the left hand stack (for spin.x) get a higher instructions/sec than the rightmost 4 instances of spin.x. These 1st instance of spin.x runs by itself (so gets lots of memory BW) and right 4 spin.x threads run in parallel and get a lower GIPS (since one thread can  just about max out the memory BW).
+        - You have to have instructions and cpu-clock (or sched_switch) callstacks
+        - The width of the GIPS 'flame' is based on the cpu-clock time.
+        - The color is based on the GIPS. A red to green to blue gradient at the top left of the chart shows the coloring.
+        - Red is a high GIPS (so lots of instructions per second ... I think of it as 'hot' doing lots of work)
+        - Blue is a low GIPS (so few instructions per second ... I think of it as 'cold')
+        - ![Below is a sample zoomed GIPS chart showing the coloring and the GIPS.](images/GIPS_zoom.png)
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
     - if you right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
     - clicking on a 'flame' zooms to just that flame
