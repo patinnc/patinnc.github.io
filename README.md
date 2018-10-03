@@ -145,10 +145,18 @@ Viz general info
     - If you click on layer of the chart, it expands higher such that the text fits. If you click on the lowest layer then it covers all data for the interval of the 'owning chart'.
     - Below is a screenshot of a zoomed flamegraph.
     - ![a screenshot of a zoomed flamegraph](images/flamegraph_zoomed.png).
-    - Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
+    - Usually the default height of the flamegraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
+    - the CPI (Clocks Per Instruction) flamegraph chart colors the process/pid/tid by the CPI for that stack.
+        - ![Below is a sample unzoomed CPI chart](images/CPI_sml.png)
+        - You have to have cycles, instructions, and cpu-clock callstacks
+        - The width of the CPI 'flame' is based on the cpu-clock time.
+        - The color is based on the CPI. A red to green to blue gradient at the top left of the chart shows the coloring.
+        - Red is a low CPI (so lots of instructions per clock ... I think of it as 'hot')
+        - Blue is a high CPI (so few of instructions per clock ... I think of it as 'cold')
+        - ![Below is a sample zoomed CPI chart showing the coloring and the CPI.](images/CPI_zoom.png)
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
-    - if right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
+    - if you right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
     - clicking on a 'flame' zooms to just that flame
     - left dragging the mouse in the flamegraph will zoom out
     - clicking a lower level of the flamegraph 'unzooms' to all the data for that level
