@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-Open Power/Performance Analysis Tool (OPPAT)
+# Open Power/Performance Analysis Tool (OPPAT)
 --------------------------------------------------------------------------------
 
 # Table of Contents
