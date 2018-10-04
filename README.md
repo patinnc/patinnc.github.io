@@ -159,7 +159,7 @@ Viz general info
         - Below is a sample zoomed CPI chart showing the coloring and the CPI. The 'spin.x' threads have been deselected in the cpu_busy legend so they don't appear in the flamegraph.
         - ![Below is a sample zoomed CPI chart.](images/CPI_zoom.png)
     - the GIPS (Giga (billion) Instructions Per Second) flamegraph chart colors the process/pid/tid by the GIPS for that stack.
-        - Below is a sample unzoomed GIPS (Giga/Billion Instructions per Second) chart. The left-hand instance of spin.x (in light green) has a GIPS = 1.13. The 4 spin.x's at the right in blue green have a GIPS= 0.377.
+        - Below is a sample unzoomed GIPS (Giga/Billion Instructions per Second) chart. The left-hand instance of spin.x (in light green) has a GIPS = 1.13. The 4 spin.x's at the right in blue green have a GIPS= 0.377. The callstack in the balloon is for one the spike callstacks to the left of the balloon.
         - ![Here is a sample unzoomed GIPS chart](images/GIPS_sml.png)
         - In the above chart note that the left hand stack (for spin.x) get a higher instructions/sec than the rightmost 4 instances of spin.x. These 1st instance of spin.x runs by itself (so gets lots of memory BW) and right 4 spin.x threads run in parallel and get a lower GIPS (since one thread can  just about max out the memory BW).
         - You have to have instructions and cpu-clock (or sched_switch) callstacks
