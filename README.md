@@ -149,7 +149,7 @@ Viz general info
     - Usually the default height of the flamegraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
     - the CPI (Clocks Per Instruction) flamegraph chart colors the process/pid/tid by the CPI for that stack.
-        - Below is a sample unzoomed CPI chart. 
+        - Below is a sample unzoomed CPI chart. The left-hand instance of spin.x (in light orange) has a CPI = 2.26 cycles/instruction. The 4 spin.x's at the right in light green have a CPI= 6.465.
         - ![Here is a sample unzoomed CPI chart](images/CPI_sml.png)
         - You have to have cycles, instructions, and cpu-clock (or sched_switch) callstacks
         - The width of the CPI 'flame' is based on the cpu-clock time.
@@ -167,7 +167,7 @@ Viz general info
         - The color is based on the GIPS. A red to green to blue gradient at the top left of the chart shows the coloring.
         - Red is a high GIPS (so lots of instructions per second ... I think of it as 'hot' doing lots of work)
         - Blue is a low GIPS (so few instructions per second ... I think of it as 'cold')
-        - Below is a sample zoomed GIPS chart showing the coloring and the GIPS.
+        - Below is a sample zoomed GIPS chart showing the coloring and the GIPS. I clicked on the 'perf 3186/3186' so just that flame is shown below.
         - ![Below is a sample zoomed GIPS chart](images/GIPS_zoomed.png)
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
     - if you right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
