@@ -23,7 +23,7 @@ The project web page is [https://patinnc.github.io](https://patinnc.github.io)
 
 The source code repo is [https://github.com/patinnc/oppat](https://github.com/patinnc/oppat)
 
-Below is one of the OPPAT chartsr. The 'cpu_busy' chart shows what is running on each CPU and the events that happen on each cpu. For example, the green circle shows a spin.x thread running on CPU 1. The red circle shows some of the events occurring on CPU1. This chart is modeled after trace-cmd's kernelshark chart.
+Below is one of the OPPAT charts. The 'cpu_busy' chart shows what is running on each CPU and the events that happen on each cpu. For example, the green circle shows a spin.x thread running on CPU 1. The red circle shows some of the events occurring on CPU1. This chart is modeled after trace-cmd's kernelshark chart. More info on the cpu_busy chart is in [chart-types section](#chart-types)
 ![a screen shot of the cpu busy chart](images/cpu_busy.png)
 
 Full (but covering a short interval of ~1 second) visualzation files, see:
