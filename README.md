@@ -116,6 +116,7 @@ Viz general info
     - ![pkg power highlighted](images/chart_pwr_highlighted.png)
 - clicking on a chart legend entry toggles the visibility of that line.
 - double clicking a legend entry makes only that entry visible/hidden
+    - Below is a screenshot where 'pkg' power was double clicked so only the pkg line is visible.
     - ![Here is a screenshot where 'pkg' power was double clicked so only the pkg line is visible.](images/chart_pwr_show_just_1.png)
     - Above shows the y-axis is adjusted to min/max of the displayed variable(s). The 'not shown' lines are greyed-out in the legend. If you hover over a 'not shown' line in the legend it will be drawn (while you are hovering on the legend item). You can get all the items to display again by double-clicking a 'not-shown' legend entry. This will show all the 'not shown' lines but it will toggle off the line you just clicked... so single-click the item you just double-clicked. I know it sounds confusing. 
 - if a legend entry is hidden and you hover over it, it will be displayed until you hover out
@@ -140,30 +141,34 @@ Viz general info
 - stacked charts
     - Stacked charts can cause a lot more data to be generated than line charts. For example, drawing a line chart of when a particular thread is running only depends on that thread. Drawing a stacked chart for running threads is different: a context switch event on any thread will change all the other running threads... so if you have N cpus, you will get N-1 more things to draw per event for stacked charts.
 - flamegraphs. For each perf event which has callstacks and is in same file as the sched_switch/CSwitch event, a flamegraph is created.
-    - Below is a screenshot of a typical default flamegraph.  Usually the default height of the flametraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
+    - Below is a screenshot of a typical default flamegraph.  Usually the default height of the flamegraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - ![a screenshot of a typical default flamegraph](images/flamegraph_typical.png).
     - If you click on layer of the chart, it expands higher such that the text fits. If you click on the lowest layer then it covers all data for the interval of the 'owning chart'.
-    - Below is a screenshot of a zoomed flamegraph.
+    - Below is a screenshot of a zoomed flamegraph (after clicking on one of the layers of a flame).
     - ![a screenshot of a zoomed flamegraph](images/flamegraph_zoomed.png).
     - Usually the default height of the flamegraph chart isn't sufficient to fit the text into each level of the flamegraph. But you still get the 'hover' callstack info.
     - the color of the flamegraph matches the process/pid/tid in the legend of cpu_busy chart... so it is not as pretty as a flamegraph but now the color of a 'flame' actually means something.
     - the CPI (Clocks Per Instruction) flamegraph chart colors the process/pid/tid by the CPI for that stack.
-        - ![Below is a sample unzoomed CPI chart](images/CPI_sml.png)
+        - Below is a sample unzoomed CPI chart. 
+        - ![Here is a sample unzoomed CPI chart](images/CPI_sml.png)
         - You have to have cycles, instructions, and cpu-clock (or sched_switch) callstacks
         - The width of the CPI 'flame' is based on the cpu-clock time.
         - The color is based on the CPI. A red to green to blue gradient at the top left of the chart shows the coloring.
         - Red is a low CPI (so lots of instructions per clock ... I think of it as 'hot')
         - Blue is a high CPI (so few instructions per clock ... I think of it as 'cold')
-        - ![Below is a sample zoomed CPI chart showing the coloring and the CPI. The 'spin.x' threads have been deselected in the cpu_busy legend so they don't appear in the flamegraph.](images/CPI_zoom.png)
+        - Below is a sample zoomed CPI chart showing the coloring and the CPI. The 'spin.x' threads have been deselected in the cpu_busy legend so they don't appear in the flamegraph.
+        - ![Below is a sample zoomed CPI chart.](images/CPI_zoom.png)
     - the GIPS (Giga (billion) Instructions Per Second) flamegraph chart colors the process/pid/tid by the GIPS for that stack.
-        - ![Below is a sample unzoomed GIPS chart](images/GIPS_sml.png)
+        - Below is a sample unzoomed GIPS (Giga/Billion Instructions per Second) chart.
+        - ![Here is a sample unzoomed GIPS chart](images/GIPS_sml.png)
         - In the above chart note that the left hand stack (for spin.x) get a higher instructions/sec than the rightmost 4 instances of spin.x. These 1st instance of spin.x runs by itself (so gets lots of memory BW) and right 4 spin.x threads run in parallel and get a lower GIPS (since one thread can  just about max out the memory BW).
         - You have to have instructions and cpu-clock (or sched_switch) callstacks
         - The width of the GIPS 'flame' is based on the cpu-clock time.
         - The color is based on the GIPS. A red to green to blue gradient at the top left of the chart shows the coloring.
         - Red is a high GIPS (so lots of instructions per second ... I think of it as 'hot' doing lots of work)
         - Blue is a low GIPS (so few instructions per second ... I think of it as 'cold')
-        - ![Below is a sample zoomed GIPS chart showing the coloring and the GIPS.](images/GIPS_zoom.png)
+        - Below is a sample zoomed GIPS chart showing the coloring and the GIPS.
+        - ![Below is a sample zoomed GIPS chart](images/GIPS_zoom.png)
     - if you hide a process in the legend (click on the legend entry...it will be greyed out) then the process will not be shown in the flamegraph.
     - if you right drag the mouse in the flamegraph that section of the flamegraph will be zoomed 
     - clicking on a 'flame' zooms to just that flame
