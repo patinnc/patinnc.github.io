@@ -19,9 +19,9 @@ Open Power/Performance Analysis Tool (OPPAT)
 ## Introduction
 Open Power/Performance Analysis Tool (OPPAT) is a cross-OS, cross-architecture Power and Performance Analysis Tool.
 
-The project web page is https://patinnc.github.io
+The project web page is [https://patinnc.github.io](https://patinnc.github.io)
 
-The source code repo is https://github.com/patinnc/oppat
+The source code repo is [https://github.com/patinnc/oppat](https://github.com/patinnc/oppat)
 
 Below is one of the OPPAT charts:
 ![a screen shot of the cpu busy chart](images/cpu_busy.png)
