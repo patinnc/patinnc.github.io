@@ -7,6 +7,7 @@
     - [chart features](#chart-features)
     - [chart types](#chart-types)
 - [Data collection for OPPAT](#data-collection-for-oppat)
+- [PCM data support](#pcm-data-support)
 - [Building OPPAT](#building-oppat)
 - [Running OPPAT](#running-oppat)
 - [Derived Events](#derived-events)
@@ -226,6 +227,16 @@ The steps for data collection using the scripts:
 - Another program wait.x/wait.exe is also started in the background. wait.cpp reads the battery info for my laptop. It works on my dual boot Windows 10/Linux Ubuntu laptop. The sysfs file might have a different name on your Linux and almost surely is different on Android. 
 - On Linux, you could probably just generate a prf_trace.data and prf_trace.txt file using the same syntax as is in run_perf.sh but I haven't tried this.
 - If you are running on a laptop and want to get the battery power, remember to disconnect the power cable before you run the script.
+
+--------------------------------------------------------------------------------
+## PCM data support
+
+- OPPAT can read and chart PCM .csv files.
+- Below is a snapshot of the list of charts created.
+    - ![screenshot of navbar with PCM charts](images/ETW_PCM_menu.png)
+- Unfortunately you have to do a patch to PCM to create a file with an absolute timestamp for OPPAT to process.
+    - This is because PCM csv file doesn't have a timestamp I can use to correlate with the other data sources.
+- message me if you need this patch. I'll see if I can get the PCM folks to accept it.
 
 --------------------------------------------------------------------------------
 ## Building OPPAT
