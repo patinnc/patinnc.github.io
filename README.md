@@ -236,7 +236,7 @@ The steps for data collection using the scripts:
     - ![screenshot of navbar with PCM charts](images/ETW_PCM_menu.png)
 - Unfortunately you have to do a patch to PCM to create a file with an absolute timestamp for OPPAT to process.
     - This is because PCM csv file doesn't have a timestamp I can use to correlate with the other data sources.
-- message me if you need this patch. I'll see if I can get the PCM folks to accept it.
+- I've added the patch here [PCM patch](PCM_patch/pcm_20181006_patch.txt)
 
 --------------------------------------------------------------------------------
 ## Building OPPAT
