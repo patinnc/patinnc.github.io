@@ -25,7 +25,7 @@ The source code repo is [https://github.com/patinnc/oppat](https://github.com/pa
 Below is one of the OPPAT charts. The 'cpu_busy' chart shows what is running on each CPU and the events that happen on each cpu. For example, the green circle shows a spin.x thread running on CPU 1. The red circle shows some of the events occurring on CPU1. This chart is modeled after trace-cmd's kernelshark chart. More info on the cpu_busy chart is in [chart-types section](#chart-types)
 ![a screen shot of the cpu busy chart](images/cpu_busy.png)
 
-Full (but covering a short interval of ~1 second) visualzation files, see:
+Full (but covering a shorter interval of ~2 second) visualzation files, see:
 - [Intel 4-CPU chip, Linux OS, html file](sample_html_files/lnx_mem_bw4.html).
 - [Intel 4-CPU chip, Windows OS, html file](sample_html_files/win_mem_bw4.html) or
 - [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file](sample_html_files/arm_mem_bw4_pi2.html).
