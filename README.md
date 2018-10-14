@@ -28,8 +28,9 @@ Below is one of the OPPAT charts. The 'cpu_busy' chart shows what is running on 
 Full (but covering a shorter interval of ~2 second) visualzation files, see:
 - [Intel 4-CPU chip, Linux OS, html file](sample_html_files/lnx_mem_bw4.html).
 - [Intel 4-CPU chip, Windows OS, html file](sample_html_files/win_mem_bw4.html) or
-- [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file](sample_html_files/arm_mem_bw4_pi2.html).
 - [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file with 7 hw events (for CPI, L2 misses, mem BW)](sample_html_files/arm_mem_bw4_pi4.html).
+- [50 MB, full version of ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file with 7 hw events (for CPI, L2 misses, mem BW)](sample_html_files/arm_mem_bw4_pi4_full.html).
+- [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file](sample_html_files/arm_mem_bw4_pi2.html).
 
 The above files are ~2 second intervals extracted from ~8 second long runs. See:
 - [the full 8 second Linux run sample html compressed file here](sample_html_files/lnx_mem_bw4_full.html.zip) for a more complete (but compressed) file. You will have to download the file, unzip it, then load it in your browser. The browser URL syntax to load an file is: file:///C:/somepath/lnx_mem_bw4_full.html
