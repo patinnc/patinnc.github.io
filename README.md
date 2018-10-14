@@ -29,6 +29,7 @@ Full (but covering a shorter interval of ~2 second) visualzation files, see:
 - [Intel 4-CPU chip, Linux OS, html file](sample_html_files/lnx_mem_bw4.html).
 - [Intel 4-CPU chip, Windows OS, html file](sample_html_files/win_mem_bw4.html) or
 - [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file](sample_html_files/arm_mem_bw4_pi2.html).
+- [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file with 7 hw events (for CPI, L2 misses, mem BW)](sample_html_files/arm_mem_bw4_pi4.html).
 
 The above files are ~2 second intervals extracted from ~8 second long runs. See:
 - [the full 8 second Linux run sample html compressed file here](sample_html_files/lnx_mem_bw4_full.html.zip) for a more complete (but compressed) file. You will have to download the file, unzip it, then load it in your browser. The browser URL syntax to load an file is: file:///C:/somepath/lnx_mem_bw4_full.html
@@ -306,10 +307,11 @@ The steps for data collection using the scripts:
          - the script records the timestamp and process/pid/tid of a 'start' event
          - when the script gets a matching 'Stop' event (matching on process/pid/tid), the script computes a duration for the new event and passes it back to OPPAT
 - A 'trigger event' is defined in chart.json and if the current event is the 'trigger event' then (after calling the lua script) the new event is emitted with the new data field(s) from the lua script.
+- An alternate to the 'trigger event' method is to have the lua script indicate whether or not it is time to write the new event. For instance, the scr_lua/prf_CPI.lua script writes a '1' to a variable named '__EMIT__' to indicate that the new CPI event should be written.
 - The new event will have:
    - the name (from the chart.json evt_name field)
    - The data from the trigger event (except the event name and the new fields (appended)
-- I have tested this on ETW data but not yet on perf/trace-cmd data
+- I have tested this on ETW data and for perf/trace-cmd data
 
 --------------------------------------------------------------------------------
 ## Using the browser GUI Interface
