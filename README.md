@@ -29,11 +29,11 @@ Full (but covering a shorter interval of ~2 second) visualzation files, see:
 - [Intel 4-CPU chip, Linux OS, html file](sample_html_files/lnx_mem_bw4.html).
 - [Intel 4-CPU chip, Windows OS, html file](sample_html_files/win_mem_bw4.html) or
 - [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file with 7 hw events (for CPI, L2 misses, mem BW)](sample_html_files/arm_mem_bw4_pi4.html).
-- [50 MB, full version of ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file with 7 hw events (for CPI, L2 misses, mem BW)](sample_html_files/arm_mem_bw4_pi4_full.html).
+- [11 MB, full version of ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file with 7 hw events (for CPI, L2 misses, mem BW)](sample_html_files/arm_mem_bw4_pi4_full.html).
 - [ARM (Broadcom A53) chip, Raspberry Pi3 Linux html file](sample_html_files/arm_mem_bw4_pi2.html).
 
 The above files are ~2 second intervals extracted from ~8 second long runs. See:
-- [the full 8 second Linux run sample html compressed file here](sample_html_files/lnx_mem_bw4_full.html.zip) for a more complete (but compressed) file. You will have to download the file, unzip it, then load it in your browser. The browser URL syntax to load an file is: file:///C:/somepath/lnx_mem_bw4_full.html
+- [the full 8 second Linux run sample html compressed file here](sample_html_files/lnx_mem_bw4_full.html) for a more complete file. The file does a javascript zlib decompress of the chart data so you will see messages asking you to wait (about 20 secs) during the decompress.
 
 --------------------------------------------------------------------------------
 ## OPPAT data supported
@@ -54,7 +54,7 @@ OPPAT viz works better in Chrome than Firefox primarily because the zoom using t
 
 OPPAT has 3 visualization modes:
 1. The usual chart mechanism (where OPPAT backend reads the data files and sends data to the browser)
-2. You can also create a standalone web page which is the equivalent of the 'regular chart mechanism' but can be exchanged with other users... the standalone web page has the all the scripts and data built-in so it could be emailed to someone and they could load it in their browser. See the html files in sample_html_files referenced above and (for a longer version of lnx_mem_bw4) see the compressed file [sample_html_files/lnx_mem_bw4_full.html.zip](sample_html_files\lnx_mem_bw4_full.html.zip)
+2. You can also create a standalone web page which is the equivalent of the 'regular chart mechanism' but can be exchanged with other users... the standalone web page has the all the scripts and data built-in so it could be emailed to someone and they could load it in their browser. See the html files in sample_html_files referenced above and (for a longer version of lnx_mem_bw4) see the compressed file [sample_html_files/lnx_mem_bw4_full.html](sample_html_files\lnx_mem_bw4_full.html)
 3. You can '--save ' a data json file and then --load the file later. The saved json file has is the data which OPPAT needs to send to the browser.  This avoids re-reading the input perf/xperf files but it won't pick up any changes made in charts.json. The full HTML file created with the --web_file option is only slightly bigger than the --save file. The --save/--load mode requires building oppat. See the sample 'saved' files in sample_data_json_files subdir.
 
 Viz general info
