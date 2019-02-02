@@ -35,7 +35,9 @@ I've added a CPU block diagram feature. I've added a full sample HTML sample fil
     - the result is that the backend is stalled (90% and 97%) of the cycles no UOPs are retired.
 ![a screen shot of the haswell cpu diagram memory bw table](images/tbl_mem.png)
     - Below is a table of an L3 read bandwidth test. No the memory BW is near zero.
+<details><summary>Click to show</summary>
 ![a screen shot of the haswell cpu diagram L3 bw table](images/tbl_L3.png)
+</details>
     - Below is a table of an L2 read bandwidth test. The L3 BW is near zero.
 ![a screen shot of the haswell cpu diagram L2 bw table](images/tbl_L2.png)
     - Below is a table of a spin test (no loads, just do adds in a loop).
