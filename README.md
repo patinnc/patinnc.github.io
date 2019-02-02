@@ -33,9 +33,21 @@ I've added a CPU block diagram feature. I've added a full sample HTML sample fil
     - the SuperQueue (SQ) is full (54.5% for core0 and 62.3% core1) of the cycles (so more L2 requests can't be handled)
     - the line fill buffer FB is full (30% and 51%) so lines can't be moved to L1d from L2
     - the result is that the backend is stalled (90% and 97%) of the cycles no UOPs are retired.
-![a screen shot of the haswell cpu diagram table](images/hsw_cpu_diag_tbl.png)
-- display the block diagram with the metric usage by the block for the resource. Below is a PNG image of the cpu_diagram canvas. The html canvas drawing (but not the PNG) displays popup info when you hover over text.
-![a PNG of the haswell cpu diagram canvas drawing](images/hsw_cpu_diag.png)
+![a screen shot of the haswell cpu diagram memory bw table](images/tbl_mem.png)
+    - Below is a table of an L3 read bandwidth test. No the memory BW is near zero.
+![a screen shot of the haswell cpu diagram L3 bw table](images/tbl_L3.png)
+    - Below is a table of an L2 read bandwidth test. The L3 BW is near zero.
+![a screen shot of the haswell cpu diagram L2 bw table](images/tbl_L2.png)
+    - Below is a table of a spin test (no loads, just do adds in a loop).
+![a screen shot of the haswell cpu diagram spin table](images/tbl_spin.png)
+- display the block diagram with the metric usage by the block for the resource for the memory BW test. Below is a PNG image of the cpu_diagram canvas. The html canvas drawing (but not the PNG) displays popup info when you hover over text.
+![a PNG of the haswell cpu diagram canvas drawing](images/cpu_diag_mem.png)
+- Below is a PNG image of the cpu_diagram of L3 read bandwidth test.
+![a PNG of the haswell cpu diagram canvas drawing](images/cpu_diag_L3.png)
+- Below is a PNG image of the cpu_diagram of L2 read bandwidth test.
+![a PNG of the haswell cpu diagram canvas drawing](images/cpu_diag_L2.png)
+- Below is a PNG image of the cpu_diagram of spin (just an add loop) test.
+![a PNG of the haswell cpu diagram canvas drawing](images/cpu_diag_spin.png)
 
 Currently this is only available for haswell (I don't have other systems to test on) but it shouldn't be hard to add other block diagrams.
 
@@ -69,6 +81,7 @@ Some of the above files are ~2 second intervals extracted from ~8 second long ru
 Here are some full sample visualzation html files: [windows sample html file](sample_html_files/win_mem_bw4.html) or [this Linux sample html file](sample_html_files/lnx_mem_bw4.html). If you are on the repo (not the github.io project website) you will have to download the file and then load it into your browser. These are standalone web files created by OPPAT which could be, for example, emailed to others or (as here) posted on a web server.
 
 OPPAT viz works better in Chrome than Firefox primarily because the zoom using touchpad 2 finger scrolling works better on Chrome.
+
 
 OPPAT has 3 visualization modes:
 1. The usual chart mechanism (where OPPAT backend reads the data files and sends data to the browser)
