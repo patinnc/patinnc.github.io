@@ -22,10 +22,17 @@
     - chart sheet
     - 1 sheet per type-of-data-collected (ie. 1 sheet per vmstat data or perf data)
 
+Useful for characterizing performance across a subset of your fleet.
 
-The project web page is [https://patinnc.github.io](https://patinnc.github.io)
+Also useful in studying performance of new servers vs old servers.
+- I've used it for comparing cpu2017 performance for upcoming servers vs in-service servers.
+- In this mode we show each server's performance instead of averaging all the servers.
+    - For instance I have cpu2017 comparison perf data by phase (subtest).
+    - The charts for each cpu2017 subtest are in a row-per-subtest on the charts page.
 
-The source code repo is [https://github.com/patinnc/oppat](https://github.com/patinnc/oppat)
+The project web page is [https://patinnc.github.io](https://patinnc.github.io/60secs)
+
+The source code repo is [https://github.com/patinnc/60secs](https://github.com/patinnc/60secs)
 
 ## Data collection for 60secs
 Working on it
