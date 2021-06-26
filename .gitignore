@@ -34,12 +34,12 @@ ipch/
 
 # Executables
 *.exe
-*.x
+#*.x
 *.out
 *.app
 
 # exe bin
-bin/
+#bin/
 
 # obj .o .obj .d dirs
 obj/
