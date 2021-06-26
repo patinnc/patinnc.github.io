@@ -30,9 +30,15 @@ Also useful in studying performance of new servers vs old servers.
     - For instance I have cpu2017 comparison perf data by phase (subtest).
     - The charts for each cpu2017 subtest are in a row-per-subtest on the charts page.
 
-The project web page is [https://patinnc.github.io](https://patinnc.github.io/60secs)
+The project web page is [https://patinnc.github.io/60secs](https://patinnc.github.io/60secs)
 
 The source code repo is [https://github.com/patinnc/60secs](https://github.com/patinnc/60secs)
+
+You can get the 60secs/extras/spin.x statically binary (for debian 64bit x86 linux) from
+https://github.com/patinnc/patinnc.github.io/bin/spin.x.
+
+You can get the 60secs/perf statically binary (for debian 64bit x86 linux) from
+https://github.com/patinnc/patinnc.github.io/bin/perf.
 
 ## Data collection for 60secs
 Working on it
