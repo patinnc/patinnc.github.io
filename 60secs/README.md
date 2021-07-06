@@ -111,6 +111,6 @@ CHART_SIZE_OPT=",chart_size{1,1,15,8}" # width_scale,height_scale[,y_units,x_uni
 ```
 
 See the output xlsx file [https://patinnc.github.io/60secs/sample_xlsx_files/spin_tst_freq_and_bw_freq.xlsx](https://patinnc.github.io/60secs/sample_xlsx_files/spin_tst_freq_and_bw_freq.xlsx)
-- screen shot of xlsx file's charts sheet [https://patinnc.github.io/60secs/sample_xlsx_files/spin_tst_xlsx.png](sample_xlsx_files/spin_tst_xlsx.png)
+- screen shot of xlsx file's charts sheet [https://patinnc.github.io/60secs/images/spin_tst_xlsx.png](../images/spin_tst_xlsx.png)
 
 
