@@ -44,7 +44,7 @@ https://github.com/patinnc/patinnc.github.io/bin/perf.
 
 There are 2 typical ways the scripts are used:
 - run the same command (or monitoring) on a list of similar hosts (I've run monitoring on 100s or a 1000 hosts)
-    - I don't 100s or 1000 different excel files so I average the results together in 1 excel file
+    - I don't want 100s or 1000 different excel files so I average the results together in 1 excel file
     - you can get pXX (p50, p90, p95 p100 etc) stats if you need them
 - run different commands on the same host (say some benchmark on 25% then 50%, then 100% of the cpus on a host to see how a workload scales with more cpus).
     - in this case I want to see each run to compare the performance
