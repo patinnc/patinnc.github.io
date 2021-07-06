@@ -41,13 +41,14 @@ You can get the 60secs/perf statically binary (for debian 64bit x86 linux) from
 https://github.com/patinnc/patinnc.github.io/bin/perf.
 
 ## Data collection for 60secs
-Working on it
+
 Example run: use spin.x to do:
 - cpu frequency test (spin.x -w freq_sml -t 10) reports freq by doing an operation that executes 1 instruction/cycle on each cpu for 10 seconds
 - memory bandwidth test (spin.x -w mem_bw -t 10 -s 100m -b 64) does read memory bw test on all cpus for 10 secs using 100 MB array size and bump 64 bytes per iterationjj
 - L2 bandwith test (spin.x -w mem_bw -t 10 -s 32k -b 64). Uses 32 KB array on each cpu. My do_perf3.sh perf script doesn't collect L2 misses so I can't actually compute an L2 bw. But I can 
 Collect perf data for each run:
 - IPC, topdown Level 1 stall percentages, L3 miss latency, memory bw, lots of other stats
+
 Use 60secs/install_and_run_on_cloud.sh:
 - to execute a command on a list of servers (in this case just 1 server).
 - to fetch the output from a list of servers.
@@ -56,7 +57,7 @@ Use 60secs/install_and_run_on_cloud.sh:
 - the list of servers (-l host_list_file) has 1 host per line
     - you can also use uns:paths
     - or subset a list of hosts (-N beg_num,end_num)
-- many of the commands (such as -r command or -r fetch_untar) done by the install_and_run script are done in the back ground by default. You set the max outstanding cmds or disable background tasks altogether (using -m 0) to serialize the output.
+- many of the commands (such as -r command or -r fetch_untar) done by the install_and_run script are done in the background by default. You set the max outstanding cmds or disable background tasks altogether (using -m 0) to serialize the output.
 - if you use -r cmd then the output for each cmd is written to a file (in the ./work_dir by default).
     - '-r cmd' is the same as '-r command' except
     - '-r cmd' writes the output for each host to a separate file
@@ -86,6 +87,7 @@ I scp the tar file to my macbook and then run the cmds below to generate an exce
 - I untar the data files: (tar xzf ...)
 - I use a script like below to generate an excel file
     - depends on python and uses xlsxwriter from John McNamara. https://github.com/jmcnamara/XlsxWriter
+
 ```
 #!/usr/bin/env bash
 
